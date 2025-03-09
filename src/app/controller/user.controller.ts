@@ -7,6 +7,11 @@ import { UserDto } from '../dto/user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @MessagePattern('get_user')
+  getUsers(): { name: string; age: number; key: string }[] {
+    return this.userService.getUsers();
+  }
+
   @MessagePattern('create_user')
   handleCreateUser(userData: UserDto) {
     return this.userService.handleUserCreate(userData);

@@ -21,6 +21,10 @@ export class UserService {
     },
   ];
 
+  getUsers(): { name: string; age: number; key: string }[] {
+    return this.users;
+  }
+
   handleUserCreate(userData: UserDto) {
     const user = {
       ...userData,

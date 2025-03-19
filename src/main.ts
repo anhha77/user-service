@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import {v4 as uuidv4} from "uuid"
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -12,7 +13,7 @@ async function bootstrap() {
           brokers: ['localhost:9094'],
         },
         consumer: {
-          groupId: 'user-consumer',
+          groupId: `user-consumer`,
         },
       },
     },

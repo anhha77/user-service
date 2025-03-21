@@ -27,10 +27,12 @@ export class UserService {
 
   async handleUserCreate(userData: UserDto): Promise<{ name: string; age: number; key: string }> {
     const user = {
-      ...userData,
+      name: userData.name,
+      age: userData.age,
       key: `${parseInt(this.users[this.users.length - 1].key, 10) + 1}`,
     };
     this.users = [...this.users, user];
+    console.log("Users", user)
     return user;
   }
 }
